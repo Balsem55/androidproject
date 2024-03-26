@@ -1,13 +1,11 @@
 package com.example.projetmobile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.content.Intent;
-import android.util.Log;
 import android.widget.ListView;
-import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +19,8 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main3);
-
-        Intent Y = getIntent();
-        Log.d("balsem","balabis");
-        rechercher=findViewById(R.id.rechercher);
-
+        rechercher = findViewById(R.id.rechercher);
         rechercher.clearFocus();
         rechercher.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -40,7 +33,6 @@ public class MainActivity3 extends AppCompatActivity {
                 filterList(newText);
                 return true;
             }
-
         });
 
         listeV=findViewById(R.id.listeview);
@@ -53,6 +45,7 @@ public class MainActivity3 extends AppCompatActivity {
         personneadap perd=new personneadap(this,R.layout.liste_row,arrayList);
         listeV.setAdapter(perd);
     }
+
     private void filterList(String text){
     List<personne> filterList=new ArrayList<>();
     for(personne per:listeP){
